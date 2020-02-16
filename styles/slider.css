@@ -1,0 +1,115 @@
+#slider {
+width: 600px; 
+margin: 0 auto; 
+position: relative;
+}
+#slides {
+padding: 5px;
+/*background-color: aliceblue;*/
+
+}
+.inner {width: 500%;}
+.inner:after {
+	content:'';
+	display: block;
+	height: 0;
+	clear:both;
+	}
+.page {float: left; width: 20%;}
+.page img {width:588px; height: 250px;}
+.inner .page h2{
+    color: aliceblue;
+    font-weight: 300;
+    
+    text-align: center;
+}
+#overflow {overflow: hidden;}
+#slider input {display: none;}
+
+#controls {
+position: absolute;
+width:100%;
+top: 120px;
+left: 0;
+height: 50px;
+}
+
+#controls label {
+display: none;
+opacity: 0.3;
+cursor: pointer;
+}
+#controls label:hover {
+opacity: 0.8;
+}
+													/* перелистывание фотографий */	
+#slide1:checked ~ #controls label:nth-child(2),
+#slide2:checked ~ #controls label:nth-child(3),
+#slide3:checked ~ #controls label:nth-child(4),
+#slide4:checked ~ #controls label:nth-child(5),
+#slide5:checked ~ #controls label:nth-child(1) {
+/* первые пять значений создадут стрелку справа*/
+width: 0;
+height: 0;
+border-top: 20px solid transparent;
+border-left: 20px solid #fff;
+border-bottom: 20px solid transparent;
+float: right; /*в правый угол*/
+margin-right:-30px; /* за блок*/ 
+display: block;
+margin-top: 20px;
+}
+#slide1:checked ~ #controls label:nth-child(5),
+#slide2:checked ~ #controls label:nth-child(1),
+#slide3:checked ~ #controls label:nth-child(2),
+#slide4:checked ~ #controls label:nth-child(3),
+#slide5:checked ~ #controls label:nth-child(4) {
+/*стрелка слева*/
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+    border-right: 20px solid  #fff;
+    float: left;	
+	display: block;
+    margin-left: -30px;
+    margin-top: 20px;
+	}
+
+#slide1:checked ~ #slides .inner { margin-left:0;} 
+#slide2:checked ~ #slides .inner { margin-left:-100%;} 
+#slide3:checked ~ #slides .inner { margin-left:-200%;} 
+#slide4:checked ~ #slides .inner { margin-left:-300%;} 
+#slide5:checked ~ #slides .inner { margin-left:-400%;} 
+
+/*точки для перелистывания*/
+#active {
+text-align: center;
+margin-top: 10px;
+}
+#active label {
+width: 15px;
+height:10px;
+background: #ccc;
+display: inline-block;
+cursor: pointer;
+border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	}
+#active label:hover {
+background: #fff;
+}
+#slide1:checked ~ #active label:nth-child(1),
+#slide2:checked ~ #active label:nth-child(2),
+#slide3:checked ~ #active label:nth-child(3),
+#slide4:checked ~ #active label:nth-child(4),
+#slide5:checked ~ #active label:nth-child(5) { background-color: #fff; box-shadow: 0 0 20px #ffe, 0 0 20px #ffe, 0 0 20px #ffe}
+
+#slides .inner {
+transition: all 0.8s ease-in-out;
+-webkit-transition: all 0.8s ease-in-out;
+-moz-transition: all 0.8s ease-in-out;
+-ms-transition: all 0.8s ease-in-out;
+-o-transition: all 0.8s ease-in-out;
+}
